@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
+@font-face {
+    font-family: 'Gilroy';
+    src: url('./Fonts/gilroy') format('OTF');
+    /* Add additional file formats if needed */
+  }
+.fff{
+font-family: 'Gilroy';
+}
+
+html,body {
+    overflow-x: hidden;
+    font-family: 'Gilroy';
+}
