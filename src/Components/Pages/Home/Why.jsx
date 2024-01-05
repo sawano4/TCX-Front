@@ -11,7 +11,7 @@ function Why() {
           Outbound en temps réel depuis votre CRM, les qualifier, prendre RDV et gagner
           des points</p>
       </div>
-      <div className='flex flex-row justify-between mx-20 space-x-10'>
+      <div className='flex flex-row justify-between w-[84vw]'>
         <Card
           icon="/icon1.svg"
           title="Sales metrics"
