@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function FormLogin() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,42 +31,37 @@ function FormLogin() {
     setShowPassword(!showPassword);
   };
 
-  const login = async () => {
+  const handleLogIn = async () => {
     setIsLoading(true);
-    try {
-      const doctor = doctors.find(
-        (doc) =>
-          doc.email === formData.email && doc.password === formData.password
-      );
-
-      if (doctor) {
-        console.log("Login successful!");
-        history.push("/"); // Use the history object for navigation
-      } else {
-        setError(true);
-        setErrorMsg("Invalid credentials");
-        setError(true); // Set state to display error
-        setTimeout(() => {
-          setError(false); // Hide error after 3000 milliseconds
-        }, 3000);
+    const res = await fetch(
+      "https://doc-organizer-db6r.onrender.com/medecins/login",
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
       }
-    } catch (err) {
+    );
+    if (res.status === 200) {
+      const data = await res.json();
+      const { accessToken, refreshToken } = data;
+      localStorage.setItem(accessToken, "accessToken");
+      localStorage.setItem(refreshToken, "accessToken");
+      setIsLoading(false);
+      navigate("/user");
+    } else {
       setError(true);
-      setErrorMsg(err.message);
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 3000);
-    } finally {
+      setErrorMsg("error");
       setIsLoading(false);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login();
+    handleLogIn();
 
-    // TODO: Perform your login logic here
     console.log("Form submitted with:", formData);
   };
 
@@ -97,7 +93,10 @@ function FormLogin() {
             name="email"
             className="border-2 rounded-lg p-3"
             placeholder="Mail Address"
-            onChange={handleChange}
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col relative">
@@ -108,7 +107,10 @@ function FormLogin() {
             name="password"
             className="border-2 rounded-lg p-3 pr-10"
             placeholder="Password"
-            onChange={handleChange}
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
           />
           <button
             type="button"
