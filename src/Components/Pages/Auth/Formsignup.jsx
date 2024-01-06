@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -59,14 +60,82 @@ function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    CreateDoctor();
+    console.log(errors)
 
-    console.log("Form submitted with:", formData);
+    // Validate the form before submitting
+    if (validateForm()) {
+      CreateDoctor();
+      console.log("Form submitted with:", formData);
+    }
   };
+
+
+  const validateForm = () => {
+    let formIsValid = true;
+    let formErrors = {};
+
+    if (!formData.firstname.trim()) {
+      formErrors.firstname = "First name is required";
+      formIsValid = false;
+    }
+
+    if (!formData.lastname.trim()) {
+      formErrors.lastname = "Last name is required";
+      formIsValid = false;
+    }
+
+    if (!formData.username.trim()) {
+      formErrors.username = "Username is required";
+      formIsValid = false;
+    }
+
+    if (!formData.phonenumber.trim()) {
+      formErrors.phonenumber = "Phone number is required";
+      formIsValid = false;
+    } else {
+      const phoneNumberRegex = /^(05|06|07)\d{8}$/;
+      if (!phoneNumberRegex.test(formData.phonenumber.trim())) {
+        formErrors.phonenumber =
+          "Invalid phone number. It should start with 05, 06, or 07 and have 10 digits.";
+          formIsValid = false;
+      }
+    }
+
+    if (!formData.email.trim()) {
+      formErrors.email = "Email is required";
+      formIsValid = false;
+    } else if (!isValidEmail(formData.email.trim())) {
+      formErrors.email = "Invalid email address";
+      formIsValid = false;
+    }
+
+    if (!formData.password.trim()) {
+      formErrors.password = "Password is required";
+      formIsValid = false;
+    }
+
+    if (!formData.gender.trim()) {
+      formErrors.gender = "Gender is required";
+      formIsValid = false;
+    }
+
+    if (!formData.specialite.trim()) {
+      formErrors.specialite = "Speciality is required";
+      formIsValid = false;
+    }
+
+    setErrors(formErrors);
+
+    return formIsValid;
+  };
+
+  
+
 
   return (
     <div className="flex flex-col justify-center items-center mt-12 w-full ">
       <form onSubmit={handleSubmit} className="lg:w-2/3  mx-auto p-8 gap-8 ">
+      
         <div className="flex flex-col gap-4 justify-center items-center  mb-8 ">
           <h1 className="text-center text-blue-700 text-3xl font-extrabold">
             Join us to get started
@@ -76,7 +145,11 @@ function SignUpForm() {
           </p>
         </div>
         <div className="flex flex-wrap gap-4 justify-center lg:w-[70%] mx-auto">
+          
           <div className="flex flex-col w-full sm:w-1/2 lg:w-[40%] ">
+          {errors.firstname && (
+              <p className="text-red-500">{errors.firstname}</p>
+            )}
             <label htmlFor="firstName"> FirstName</label>
             <input
               required
@@ -122,6 +195,9 @@ function SignUpForm() {
             />
           </div>
           <div className="flex flex-col w-full sm:w-1/2 lg:w-[40%] ">
+          {errors.phonenumber && (
+              <p className="text-red-500">{errors.phonenumber}</p>
+            )}
             <label htmlFor="phoneNumber">PhoneNumber</label>
             <input
               required

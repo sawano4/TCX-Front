@@ -131,7 +131,7 @@ function FormLogin() {
         <p className="text-center">
           Don{"'"}t have an account?
           <span className="text-blue-400">
-            <Link to="/Signup"> Sign up</Link>{" "}
+            <Link to="/register"> Sign up</Link>{" "}
           </span>{" "}
         </p>
       </form>

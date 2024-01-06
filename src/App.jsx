@@ -5,6 +5,8 @@ import HomeUser from "./Components/Pages/User/Pages/HomeUser";
 import Login from "./Components/Pages/Auth/Login";
 import Signup from "./Components/Pages/Auth/Signup";
 import UserLayout from "./Components/Pages/User/Layout/UserLayout";
+import Addpatient from "./Components/Pages/User/Pages/Addpatient";
+import Editpatient from "./Components/Pages/User/Pages/Editpatient";
 
 export default function App() {
   const UserContext = createContext(1);
@@ -17,11 +19,11 @@ export default function App() {
         <Route>
           <Route path="/" element={<Home />} />
         </Route>
-        {/* User routes */}
         {isUser && (
           <Route element={<UserLayout />} path="/user">
             <Route index element={<HomeUser />} />
-            {/* User routes */}
+            <Route path="/user/add" element={<Addpatient />}></Route>
+            <Route path="/user/edit" element={<Editpatient />}></Route>
           </Route>
         )}
         {/* Auth routes, no layout */}
