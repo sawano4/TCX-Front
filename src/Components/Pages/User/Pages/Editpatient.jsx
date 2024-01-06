@@ -1,5 +1,5 @@
 import LabeledInput from "./Labeledinput"
-import CustomInput from "./Labeledinputpen"
+import Labelinputpen from "./Labelinputpen"
 import  Importfileclick from "./importfileclick"
 import { Link, useNavigate } from "react-router-dom";
 

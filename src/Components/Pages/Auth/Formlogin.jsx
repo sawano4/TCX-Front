@@ -112,7 +112,8 @@ function FormLogin() {
               setFormData({ ...formData, password: e.target.value })
             }
           />
-          <button
+          
+            <button
             type="button"
             className="absolute inset-y-0 right-0 flex items-center px-3 py-2"
             onClick={handleTogglePassword}
@@ -122,12 +123,12 @@ function FormLogin() {
           <p className="text-white">gg</p>
         </div>
         <div className="flex flex-col gap-6">
-          <button
+        <Link to='/user'><button
             type="submit"
             className="w-full rounded-lg bg-teal-400 p-4 text-white"
           >
             {(isLoading && <h4>loading...</h4>) || "Connexion"}
-          </button>
+          </button></Link>
         </div>
         {displayError}
         <p className="text-center">
