@@ -1,27 +1,26 @@
-import React from 'react'
-import Formlogin from './Formlogin'
+import React, { useEffect, useState } from "react";
+import Formlogin from "./Formlogin";
 
 function Login() {
   return (
     <>
-    <img src="./Drleftlogin.png" alt="" className='absolute hidden lg:flex left-[-1rem] top-10'/>
+      <img
+        src="./Drleftlogin.png"
+        alt=""
+        className="absolute hidden lg:flex left-[-1rem] top-10"
+      />
 
-    <img src="./Drrightlogin.png" alt="" className='absolute right-[-3rem] hidden lg:flex bottom-1' />
+      <img
+        src="./Drrightlogin.png"
+        alt=""
+        className="absolute right-[-3rem] hidden lg:flex bottom-1"
+      />
 
-
-    
-
-    <div className='flex flex-col-1 sm:flex-cols-2 w-full h-screen '>
-     <Formlogin />
-
-     
-
-
-    </div>
-    
-    
+      <div className="flex flex-col-1 sm:flex-cols-2 w-full h-screen ">
+        <Formlogin />
+      </div>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;

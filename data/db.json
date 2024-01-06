@@ -1,0 +1,42 @@
+{
+  "doctors": [
+    {
+      "firstName": "safdasfsdaf",
+      "lastName": "fdsafsa",
+      "phoneNumber": "fasfdsa",
+      "email": "fdsaf",
+      "speciality": "dermatologist",
+      "password": "fasfsadfasd",
+      "id": 1
+    },
+    {
+      "firstName": "safdasfsdafas",
+      "lastName": "fsdasf",
+      "phoneNumber": "fsdaf",
+      "email": "fasdf",
+      "speciality": "dermatologist",
+      "password": "fasfsadfasd",
+      "id": 2
+    },
+    {
+      "firstName": "fasdf",
+      "lastName": "fsadfasd",
+      "phoneNumber": "fsdafas",
+      "email": "fasf",
+      "speciality": "dermatologist",
+      "password": "fasdfsda",
+      "id": 3
+    },
+    {
+      "email": "fsafasdfsdfa",
+      "password": "fdsfas",
+      "id": 4
+    },
+    {
+      "email": "fdsaf",
+      "password": "fsdfa",
+      "id": 5
+    }
+  ],
+  "login": []
+}
