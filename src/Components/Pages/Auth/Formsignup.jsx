@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function SignUpForm() {
+
   const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState({
     firstname: "",
     lastname: "",
     username: "",
@@ -14,6 +14,9 @@ function SignUpForm() {
     gender: "",
     specialite: "",
   });
+  console.log(errors);
+  const [formData, setFormData] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
 
   const CreateDoctor = async () => {
@@ -74,7 +77,7 @@ function SignUpForm() {
     let formIsValid = true;
     let formErrors = {};
 
-    if (!formData.firstname.trim()) {
+    if (formData.firstname.trim()== "") {
       formErrors.firstname = "First name is required";
       formIsValid = false;
     }
@@ -152,7 +155,6 @@ function SignUpForm() {
             )}
             <label htmlFor="firstName"> FirstName</label>
             <input
-              required
               type="text"
               id="firstName"
               name="firstName"

@@ -1,6 +1,7 @@
 import LabeledInput from "./Labeledinput"
 import CustomInput from "./Labeledinputpen"
 import  Importfileclick from "./importfileclick"
+import { Link, useNavigate } from "react-router-dom";
 
 function Editpatient() {
   return (

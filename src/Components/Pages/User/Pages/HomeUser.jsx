@@ -1,5 +1,8 @@
 import she from '../../../../assetss/imgs/she.svg'
 import PatientCard from "../patients/patientCard"
+import History from './HistoryItem';
+import MyCalendar from './calendar';
+import { Link } from 'react-router-dom';
 function HomeUser() {
   const patients = [
     { name: "patient01", gender: "male" },
@@ -8,7 +11,7 @@ function HomeUser() {
     { name: "patient04", gender: "female" },
   ];
   return (
-    <section className="w-screen py-10 flex items-center justify-center ">
+    <section className="w-screen py-10 flex gap-20 justify-center ">
       <div className="w-1/2  h-full  flex flex-col items-center justify-around">
         <div className="w-full h-[200px] bg-white drop-shadow-lg flex justify-between items-center px-6 py-2 rounded-lg">
           <div className="flex flex-col justify-center gap-4">
@@ -48,9 +51,9 @@ function HomeUser() {
               type="search"
               placeholder="search"
             />
-            <button className="bg-[#023E8A] text-white px-6 py-1 rounded-md drop-shadow-md">
+            <Link to='/user/add'><button className="bg-[#023E8A] text-white px-6 py-1 rounded-md drop-shadow-md">
               Ajouter un patient
-            </button>
+            </button></Link>
           </div>
           <div className="flex items-center gap-4 justify-start py-5  w-full flex-wrap">
             {patients.map((patient, index) => (
@@ -59,8 +62,15 @@ function HomeUser() {
           </div>
         </div>
       </div>
-
-      <div className="w-1/3 h-full bg-green-300"></div>
+       <div className='flex flex-col w-1/4 items-center'>
+      <div className="w-5/6 border-red-400 rounded-[11px]"> <MyCalendar /></div>
+      <div className='mt-20 flex flex-col justify-center'>
+        <h2 className='text-center fff text-2xl text-blue-600 mb-10'> Recent History </h2>
+        <ul>
+          <li className='w-full rounded-lg p-3 text-white items-center border-2 bg-gray-500'> <History /></li>
+        </ul>
+      </div>
+      </div>
     </section>
   );
 }

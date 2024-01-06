@@ -24,11 +24,13 @@ export default function App() {
             <Route index element={<HomeUser />} />
             <Route path="/user/add" element={<Addpatient />}></Route>
             <Route path="/user/edit" element={<Editpatient />}></Route>
+            <Route path='/user/profile' element></Route>
           </Route>
         )}
         {/* Auth routes, no layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
+
       </Routes>
     </BrowserRouter>
   );

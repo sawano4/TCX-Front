@@ -1,6 +1,7 @@
 import React from 'react';
 import female from '../../../../../src/assetss/imgs/female.svg';
 import male from '../../../../../src/assetss/imgs/male.svg'
+import { Link } from "react-router-dom";
 
 function PatientCard({ patient, onDelete }) {
   const deleteItem = () => {
@@ -18,9 +19,9 @@ function PatientCard({ patient, onDelete }) {
       </div>
       <div>
         <h4 className="text-[#002845] text-xl">{patient.name}</h4>
-        <button className="border-2 rounded-lg border-[#436178] p-1 text-[#436178] ">
+        <Link to='/user/edit'><button className="border-2 rounded-lg border-[#436178] p-1 text-[#436178] ">
           see details
-        </button>
+        </button></Link>
       </div>
     </div>
   );
