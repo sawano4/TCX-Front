@@ -1,5 +1,5 @@
 import she from '../../../../assetss/imgs/she.svg'
-import PatientCard from "../patients/patientCard"
+import PatientCard from "../patients/PatientCard.jsx"
 import History from './HistoryItem';
 import MyCalendar from './calendar';
 import { Link } from 'react-router-dom';
